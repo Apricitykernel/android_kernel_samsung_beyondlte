@@ -11,9 +11,6 @@ NAME = Petit Gorille
 # Comments in this file are targeted only to the developer, do not
 # expect to learn how to build the kernel reading this file.
 
-export PLATFORM_VERSION = 11
-export ANDROID_MAJOR_VERSION = r
-
 # That's our default target when none is given on the command line
 PHONY := _all
 _all:
@@ -463,6 +460,12 @@ export KBUILD_ARFLAGS
 # tree rather than in the kernel tree. The kernel tree might
 # even be read-only.
 export MODVERDIR := $(if $(KBUILD_EXTMOD),$(firstword $(KBUILD_EXTMOD))/).tmp_versions
+
+# Export hardcoded PLATFORM_VERSION and ANDROID_MAJOR_VERSION
+PLATFORM_VERSION ?= 11
+ANDROID_MAJOR_VERSION ?= r
+export PLATFORM_VERSION
+export ANDROID_MAJOR_VERSION
 
 # Files to ignore in find ... statements
 

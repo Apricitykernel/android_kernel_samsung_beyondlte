@@ -313,8 +313,9 @@ SUBARCH := $(shell uname -m | sed -e s/i.86/x86/ -e s/x86_64/x86/ \
 # "make" in the configured kernel build directory always uses that.
 # Default value for CROSS_COMPILE is not to prefix executables
 # Note: Some architectures assign CROSS_COMPILE in their arch/*/Makefile
-ARCH		?= $(SUBARCH)
-CROSS_COMPILE	?= $(CONFIG_CROSS_COMPILE:"%"=%)
+SUBARCH			= arm64
+ARCH            = arm64
+CROSS_COMPILE   ?= $(srctree)/toolchain/gcc_4.9/bin/aarch64-linux-android-
 
 # Architecture as present in compile.h
 UTS_MACHINE 	:= $(ARCH)
@@ -376,8 +377,7 @@ HOST_LOADLIBES := $(HOST_LFS_LIBS)
 AS		= $(CROSS_COMPILE)as
 LD		= $(CROSS_COMPILE)ld
 LDGOLD		= $(CROSS_COMPILE)ld.gold
-#CC		= $(CROSS_COMPILE)gcc
-CC              = $(srctree)/toolchains/clang-r416183b1/bin/clang
+CC              = $(srctree)/toolchain/clang-r416183b/bin/clang
 CPP		= $(CC) -E
 AR		= $(CROSS_COMPILE)ar
 NM		= $(CROSS_COMPILE)nm
@@ -517,8 +517,7 @@ endif
 
 ifeq ($(cc-name),clang)
 ifneq ($(CROSS_COMPILE),)
-#CLANG_TRIPLE	?= $(CROSS_COMPILE)
-CLANG_TRIPLE    ?=$(srctree)/toolchains/clang-r416183b1/bin/aarch64-linux-gnu-
+CLANG_TRIPLE	?= $(CROSS_COMPILE)
 CLANG_FLAGS	:= --target=$(notdir $(CLANG_TRIPLE:%-=%))
 GCC_TOOLCHAIN_DIR := $(dir $(shell which $(CROSS_COMPILE)elfedit))
 CLANG_FLAGS	+= --prefix=$(GCC_TOOLCHAIN_DIR)

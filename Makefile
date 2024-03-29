@@ -420,20 +420,12 @@ LINUXINCLUDE    := \
 		-I$(objtree)/include \
 		$(USERINCLUDE)
 
-KBUILD_AFLAGS   := -D__ASSEMBLY__ -march=armv8-a+lse
+KBUILD_AFLAGS   := -D__ASSEMBLY__
 KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
 		   -fno-strict-aliasing -fno-common -fshort-wchar \
 		   -Werror-implicit-function-declaration \
 		   -Wno-format-security \
-		   -Wno-misleading-indentation \
-		   -Wno-pointer-to-int-cast \
-		   -Wno-void-pointer-to-enum-cast \
-		   -Wno-sizeof-array-div \
-		   -Wno-tautological-overlap-compare \
-		   -Wno-fortify-source \
-		   -Wno-sizeof-pointer-div \
 		   -Werror \
-		   -Xassembler -march=armv8-a+lse \
 		   -std=gnu89
 KBUILD_CPPFLAGS := -D__KERNEL__
 KBUILD_AFLAGS_KERNEL :=

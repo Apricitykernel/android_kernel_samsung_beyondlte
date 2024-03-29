@@ -375,7 +375,7 @@ HOST_LOADLIBES := $(HOST_LFS_LIBS)
 # Make variables (CC, etc...)
 AS				= $(CCACHE) $(CROSS_COMPILE)as
 LD				= $(CCACHE) $(CROSS_COMPILE)ld
-CC      		= $(CCACHE) $(srctree)/toolchain/clang_r416183b/bin/clang
+CC      		= $(CCACHE) $(srctree)/toolchain/clang-r416183b/bin/clang
 CPP				= $(CCACHE) $(CC) -E
 AR				= $(CCACHE) $(CROSS_COMPILE)ar
 NM				= $(CCACHE) $(CROSS_COMPILE)nm
